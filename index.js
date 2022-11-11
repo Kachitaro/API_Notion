@@ -1,7 +1,15 @@
+const dotenv = require('dotenv').config();
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
+const { Client } = require('@notionhq/client');
+
+const notion = new Client({ auth: process.env.NOTION_KEY })
+const databaseId = process.env.NOTION_DATABASE_ID
+
+console.log(notion);
+console.log(databaseId);
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
@@ -27,5 +35,5 @@ server.use(router)
 // Start server
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log('JSON Server is running')
+    console.log(`JSON Server is running http://localhost:${PORT}`)
 })
