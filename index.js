@@ -17,6 +17,20 @@ server.get('/echo', (req, res) => {
 })
 
 // To handle POST, PUT and PATCH you need to use a body-parser
+
+const getEvent = async () => {
+    const response = await notion.databases.query({database_id: databaseId});
+    console.log(response);
+    console.log(response.   properties);
+    // const payload  = {
+    //     path: `databases/${databaseId}/query`,
+    //     method: 'POST',
+    // }
+    // const {results} = await notion.request(payload)
+    // console.log(results);
+}
+
+getEvent()
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser)
 server.use((req, res, next) => {
