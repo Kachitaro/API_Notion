@@ -8,9 +8,6 @@ const { Client } = require('@notionhq/client');
 const notion = new Client({ auth: process.env.NOTION_KEY })
 const databaseId = process.env.NOTION_DATABASE_ID
 
-console.log(notion);
-console.log(databaseId);
-
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares)
 
